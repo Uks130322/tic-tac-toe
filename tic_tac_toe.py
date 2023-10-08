@@ -16,11 +16,11 @@ phrases = {"begin": ("Let's play tic-tac-toe!",
            "humanFirst": ("You are X and i'm O",
                           "Please, begin"),
            "instruction": ("Enter cell name in 'a1' format",),
-           "computerTern": ("My tern now",
+           "computerTurn": ("My turn now",
                             "It's my move",
                             "I'll move here:",
                             "Okay, let me think..."),
-           "humanTern": ("Your tern now",
+           "humanTurn": ("Your turn now",
                          "Please make your move",
                          "Let's see what you'll do",
                          "Make your choose"),
@@ -67,14 +67,14 @@ def start():
 human_first = start()
 
 
-def computer_tern():
+def computer_turn():
     """Computer choose random field to move"""
 
     global MOVES, field_list, human_first
     move = random.randrange(MOVES)
     k = 0
 
-    print(random.choice(phrases["computerTern"]))
+    print(random.choice(phrases["computerTurn"]))
     sleep(1)
 
     for index in range(len(field_list)):
@@ -89,12 +89,12 @@ def computer_tern():
     MOVES -= 1
 
 
-def human_tern():
+def human_turn():
     """Human move in format 'a1'"""
 
     global MOVES, field_list, human_first
 
-    print(random.choice(phrases["humanTern"]))
+    print(random.choice(phrases["humanTurn"]))
 
     move = input()
     move = clean_input(move, str.lower)
@@ -111,10 +111,10 @@ def human_tern():
         MOVES -= 1
     except FieldIsOccupied:
         print(random.choice(phrases["occupied"]))
-        human_tern()
+        human_turn()
     except ValueError:
         print(random.choice(phrases["wrongFormat"]))
-        human_tern()
+        human_turn()
 
 
 def show_field() -> None:
@@ -222,17 +222,17 @@ def all_together():
     if human_first:
         print(random.choice(phrases["humanFirst"]))
         show_field()
-        human_tern()
+        human_turn()
         show_field()
     else:
         print(random.choice(phrases["computerFirst"]))
     while MOVES > 0:
-        computer_tern()
+        computer_turn()
         show_field()
         if choose_winner() != 0:
             print(choose_winner())
             break
-        human_tern()
+        human_turn()
         show_field()
         if choose_winner() != 0:
             print(choose_winner())
