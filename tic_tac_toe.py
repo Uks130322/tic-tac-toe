@@ -242,3 +242,13 @@ def all_together():
 
 
 all_together()
+
+
+def main():
+    all_together()
+
+
+if __name__ == '__main__':
+    main()
+else:
+    print('b_game loaded as a module')
