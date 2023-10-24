@@ -41,9 +41,13 @@ phrases = {"begin": ("Let's play tic-tac-toe!",
                     "A draw. Good game"),
            "playAgain": ("Wanna play again?",
                          "Maybe one more time?"),
-           "dontPlayAgain": ("Ok, bye! Hava a nice day",
+           "dontPlayAgain": ("Ok, bye! Have a nice day",
                              "I'll be waiting for you here!")
            }
+
+
+def main():
+    all_together()
 
 
 class FieldIsOccupied(ValueError):
@@ -51,6 +55,8 @@ class FieldIsOccupied(ValueError):
 
 
 def clean_input(some_text, func):
+    """Delete all marks and spaces from text and do func (for example, lower)"""
+
     table = some_text.maketrans(',.?:;!-', "       ")
     some_text = some_text.translate(table)
     some_text = some_text.replace(" ", "")
@@ -241,14 +247,10 @@ def all_together():
     play_again()
 
 
-all_together()
-
-
-def main():
-    all_together()
+# all_together()
 
 
 if __name__ == '__main__':
     main()
 else:
-    print('b_game loaded as a module')
+    print('tic_tac_toe loaded as a module')
